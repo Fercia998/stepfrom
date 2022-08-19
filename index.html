@@ -49,8 +49,8 @@
         <p><input placeholder="Nom..." oninput="this.className = ''" name="" id="Tnom" ></p>
         <p><input placeholder="Prenom..." oninput="this.className = ''" name="" id="Tprenom" ></p>
         <p><input placeholder="Profession..." oninput="this.className = ''" name="" id="TProfession" ></p>
-        <p><input placeholder="Numéro de téléphone..." oninput="this.className = ''" name="" id="Tcontact" ></p>
-        <p><input placeholder="Adresse mail..." oninput="this.className = ''" name="" id="Temail" ></p>
+        <p><input type="number" placeholder="Numéro de téléphone..." oninput="this.className = ''" name="" id="Tcontact" ></p>
+        <p><input type="email" placeholder="Adresse mail..." oninput="this.className = ''" name="" id="Temail" ></p>
         <div class="him index-btn" onclick="run(2, 1);" style="margin-right: -10px;">Precedent</div>
         <button class = "index-btn" type="submit" name="submit" style = "background-color: #d359aa; margin-left: 20vw;">Soumettre</button>
         
@@ -61,6 +61,43 @@
       </div>
 
     </form>
+    <div class="col-8">
+      <h1>Informations des Elèves</h1>
+      <table style="width: 100%;" class="table">
+          <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Age</th>
+                  <th>Genre</th>
+                  <th>Classe</th>
+                  
+              </tr>
+          </thead>
+          <tbody id="eleves">
+              
+          </tbody>
+      </table>
+      <hr>
+      <h1>Informations des parents</h1>
+      <table style="width: 100%;" class="table">
+          <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Profession</th>
+                  <th>Numero de Telephone</th>
+                  <th>Adresse mail</th>
+                  
+              </tr>
+          </thead>
+          <tbody id="parents">
+            
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>
 
     <script>
       // Default tab
