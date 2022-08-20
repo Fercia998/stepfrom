@@ -9,7 +9,7 @@
   </head>
   <body>
     <form id="regForm" action="" method="post" autocomplete = "off">
-      <h1 align = center>Formulaire</h1>
+      <h1 align = center>Formulaire d'inscription</h1>
 
       
 
@@ -38,7 +38,7 @@
   </p>
 
         <div class="index-btn-wrapper">
-          <div class="index-btn" onclick="run(1, 2);">suivant <ion-icon class="icon" name="arrow-forward-sharp"></ion-icon>
+          <div class="index-btn" onclick="run(1, 2);">Suivant <ion-icon class="icon" name="arrow-forward-sharp"></ion-icon>
           </div>
         </div>
       </div>
@@ -49,10 +49,10 @@
         <p><input placeholder="Nom..." oninput="this.className = ''" name="" id="Tnom" ></p>
         <p><input placeholder="Prenom..." oninput="this.className = ''" name="" id="Tprenom" ></p>
         <p><input placeholder="Profession..." oninput="this.className = ''" name="" id="TProfession" ></p>
-        <p><input type="number" placeholder="Numéro de téléphone..." oninput="this.className = ''" name="" id="Tcontact" ></p>
+        <p><input type="tel" placeholder="Numéro de téléphone..." oninput="this.className = ''" name="" id="Tcontact" ></p>
         <p><input type="email" placeholder="Adresse mail..." oninput="this.className = ''" name="" id="Temail" ></p>
         <div class="him index-btn" onclick="run(2, 1);" style="margin-right: -10px;">Precedent</div>
-        <button class = "index-btn" type="submit" name="submit" style = "background-color: #d359aa; margin-left: 20vw;">Soumettre</button>
+        <button class = "index-btn" type="submit" name="submit" style = "background-color: #d359aa; margin-left: 20vw;">Soummettre</button>
         
       </div>
       <div style="text-align:center;">
@@ -69,7 +69,7 @@
                   <th>Nom</th>
                   <th>Prenom</th>
                   <th>Age</th>
-                  <th>Genre</th>
+                  <th>Sexe</th>
                   <th>Classe</th>
                   
               </tr>
@@ -122,6 +122,10 @@
         for (i = 1; i < showTab; i++){
           $("#step-"+i).css("opacity", "1");
         }
+        for (i = 2; i < showTab; i++){
+          $("#step-"+i).css("opacity", "1");
+        }
+
 
         // Switch tab
         $("#tab-"+hideTab).css("display", "none");
@@ -151,29 +155,132 @@ let nomTuteur = document.getElementById("Tnom"),
     emailTuteur = document.getElementById("Temail");
 
 
-      
+    // let table= []
+    // localStorage.setItem('Nom', JSON.stringify(table))
+   
+    const nom = localStorage.getItem('nomEleve') || '',
+        prenom = localStorage.getItem('prenom') || '',
+        sexe = localStorage.getItem('sexe') || '',
+        date = localStorage.getItem('date') || '',
+        lieu = localStorage.getItem('lieu') || '',
+        classe = localStorage.getItem('classe') || '',
+
+
+        nomTut = localStorage.getItem('nomTut') || '',
+        prenomTut = localStorage.getItem('prenomTut') || '',
+        professionTut = localStorage.getItem('professionTut') || '',
+        contactTut = localStorage.getItem('contactTut') || '',
+        emailTut = localStorage.getItem('emailTut') || '';
+
+    
 let post = document.getElementById("regForm");
 
 post.addEventListener("submit", function(event){
   event.preventDefault()
   
-  // RECUP DATA 
-  console.log(nomEleve.value);
-  console.log(prenomEleve.value);
-  console.log(selectClasse.options[selectClasse.selectedIndex].value);
-  console.log(dateEleve.value);
-  console.log(lieuEleve.value);
-  console.log(selectSexe.options[selectSexe.selectedIndex].value);
+  // // RECUP DATA 
+  //  console.log(nomEleve.value);
+  //  console.log(prenomEleve.value);
+  //  console.log(selectClasse.options[selectClasse.selectedIndex].value);
+  //  console.log(dateEleve.value);
+  //  console.log(lieuEleve.value);
+  //  console.log(selectSexe.options[selectSexe.selectedIndex].value);
 
 
-  console.log(nomTuteur.value);
-  console.log(prenomTuteur.value);
-  console.log(ProfessionTuteur.value);
-  console.log(contactTuteur.value);
-  console.log(emailTuteur.value);
+  //  console.log(nomTuteur.value);
+  //  console.log(prenomTuteur.value);
+  //  console.log(ProfessionTuteur.value);
+  //  console.log(contactTuteur.value);
+  //   console.log(emailTuteur.value);
 
-  run(2, 1)
+  //  run(2, 1)
+
+  
+  let tableauEleve= {
+    nom: nomEleve.value,
+    prenom: prenomEleve.value,
+    sexe: selectSexe.value,
+    date: dateEleve.value,
+    lieu: lieuEleve.value,
+    classe: selectClasse.value,
+    nomTuteur: nomTuteur.value,
+    prenomTuteur : prenomTuteur.value,
+    profession: ProfessionTuteur.value,
+    contact: contactTuteur.value,
+    email: emailTuteur.value,
+    
+
+    
+    
+  }
+  console.log(tableauEleve)
+  localStorage.setItem('tableauEleve', JSON.stringify(tableauEleve));
+
+ 
+
+
+
+
 });
+function submit (){
+  (e)  =>{
+  e.preventDefault();
+
+  const firstName = document.querySelector("#Enom").value;
+  const lastName = document.querySelector("#Eprenom").value;
+  const sexe = document.querySelector("#sexe").value;
+  const date = document.querySelector("#Edate").value;
+
+  
+      const list = document.querySelector("#regForm");
+      const row = document.createComment("tr")
+
+      row.innerHTML = `
+          <td>${firstName}</td>
+          <th>${lastName}</th>
+          <th>${sexe}</th>
+          <th>${date}</th>
+
+      `;
+      list.appendChild(row);
+      
+      
+      
+    }
+  
+
+}
+document.querySelector("#regForm").addEventListener("submit" , (e)  =>{
+  e.preventDefault();
+
+  const firstName = document.querySelector("#Enom").value;
+  const lastName = document.querySelector("#Eprenom").value;
+  const sexe = document.querySelector("#sexe").value;
+  const date = document.querySelector("#Edate").value;
+
+  
+      const list = document.querySelector("#regForm");
+      const row = document.createComment("tr")
+
+      row.innerHTML = `
+          <td>${firstName}</td>
+          <th>${lastName}</th>
+          <th>${sexe}</th>
+          <th>${date}</th>
+
+      `;
+      list.appendChild(row);
+      
+      
+    }
+  
+) 
+
+var tableaux= document.getElementById("Enom").innerHTML;
+console.log(tableaux);
+
+
+
 
 // LOCALE STORAGE
 
