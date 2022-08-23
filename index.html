@@ -43,17 +43,17 @@
         </div>
       </div>
 
-      <div class="tab" id = "tab-2">
+      <div class="tab" id = "tab-2" style="align-items: center; display:flex">
 
-        <p>Information du Tuteur:</p>
-        <p><input placeholder="Nom..." oninput="this.className = ''" name="" id="Tnom" ></p>
-        <p><input placeholder="Prenom..." oninput="this.className = ''" name="" id="Tprenom" ></p>
+        <p>Informations du Tuteur:</p>
+        <p><input placeholder="Nom Tuteur ..." oninput="this.className = ''" name="" id="Tnom" ></p>
+        <p><input placeholder="Prenom Tuteur" oninput="this.className = ''" name="" id="Tprenom" ></p>
         <p><input placeholder="Profession..." oninput="this.className = ''" name="" id="TProfession" ></p>
         <p><input type="tel" placeholder="Numéro de téléphone..." oninput="this.className = ''" name="" id="Tcontact" ></p>
         <p><input type="email" placeholder="Adresse mail..." oninput="this.className = ''" name="" id="Temail" ></p>
         <div class="him index-btn" onclick="run(2, 1);" style="margin-right: -10px;">Precedent</div>
-        <button class = "index-btn" type="submit" name="submit" style = "background-color: #d359aa; margin-left: 20vw;">Soummettre</button>
-        
+        <button class = "index-btn" onclick="soummettre()" name="submit" style = "background-color: #d359aa; margin-left: 20vw;">Soummettre</button>
+      
       </div>
       <div style="text-align:center;">
         <span class="step" id = "step-1">1</span>
@@ -62,36 +62,27 @@
 
     </form>
     <div class="col-8">
-      <h1>Informations des Elèves</h1>
-      <table style="width: 100%;" class="table">
+     
+      <h1>Tableau Informations</h1>
+      <table style="width: 100%;" class="tableau">
           <thead>
               <tr>
                   <th>Nom</th>
                   <th>Prenom</th>
-                  <th>Age</th>
                   <th>Sexe</th>
-                  <th>Classe</th>
-                  
-              </tr>
-          </thead>
-          <tbody id="eleves">
-              
-          </tbody>
-      </table>
-      <hr>
-      <h1>Informations des parents</h1>
-      <table style="width: 100%;" class="table">
-          <thead>
-              <tr>
+                  <th>Date </th>
+                  <th>Lieu</th>
+                  <th>classe</th>
                   <th>Nom</th>
                   <th>Prenom</th>
-                  <th>Profession</th>
-                  <th>Numero de Telephone</th>
+                  <th>profession</th>
+                  <th>contact</th>
                   <th>Adresse mail</th>
+
                   
               </tr>
           </thead>
-          <tbody id="parents">
+          <tbody id="parents" style=" align-items:center">
             
           </tbody>
       </table>
@@ -136,66 +127,103 @@
 
 
 
+
+
       
     // VARIABLE
 
     // ELEVE
-let nomEleve = document.getElementById("Enom"),
-    prenomEleve = document.getElementById("Eprenom"),
-    selectSexe = document.getElementById("sexe"),
-    dateEleve = document.getElementById("Edate"),
-    lieuEleve = document.getElementById("lieuNaiss"),
-    selectClasse = document.getElementById("classe");
+let nomEleve = document.getElementById("Enom")
+let prenomEleve = document.getElementById("Eprenom")
+let selectSexe = document.getElementById("sexe")
+let dateEleve = document.getElementById("Edate")
+let lieuEleve = document.getElementById("lieuNaiss")
+let selectClasse = document.getElementById("classe")
 
     // TUTEUR
-let nomTuteur = document.getElementById("Tnom"),
-    prenomTuteur = document.getElementById("Tprenom"),
-    ProfessionTuteur = document.getElementById("TProfession"),
-    contactTuteur = document.getElementById("Tcontact"),
-    emailTuteur = document.getElementById("Temail");
+let nomTuteur = document.getElementById("Tnom")
+let prenomTuteur = document.getElementById("Tprenom")
+let ProfessionTuteur = document.getElementById("TProfession")
+let contactTuteur = document.getElementById("Tcontact")
+let emailTuteur = document.getElementById("Temail")
 
 
     // let table= []
     // localStorage.setItem('Nom', JSON.stringify(table))
    
-    const nom = localStorage.getItem('nomEleve') || '',
-        prenom = localStorage.getItem('prenom') || '',
-        sexe = localStorage.getItem('sexe') || '',
-        date = localStorage.getItem('date') || '',
-        lieu = localStorage.getItem('lieu') || '',
-        classe = localStorage.getItem('classe') || '',
+    // const nom = localStorage.getItem('nomEleve') || '',
+    //     prenom = localStorage.getItem('prenom') || '',
+    //     sexe = localStorage.getItem('sexe') || '',
+    //     date = localStorage.getItem('date') || '',
+    //     lieu = localStorage.getItem('lieu') || '',
+    //     classe = localStorage.getItem('classe') || '',
 
 
-        nomTut = localStorage.getItem('nomTut') || '',
-        prenomTut = localStorage.getItem('prenomTut') || '',
-        professionTut = localStorage.getItem('professionTut') || '',
-        contactTut = localStorage.getItem('contactTut') || '',
-        emailTut = localStorage.getItem('emailTut') || '';
+    //     nomTut = localStorage.getItem('nomTut') || '',
+    //     prenomTut = localStorage.getItem('prenomTut') || '',
+    //     professionTut = localStorage.getItem('professionTut') || '',
+    //     contactTut = localStorage.getItem('contactTut') || '',
+    //     emailTut = localStorage.getItem('emailTut') || '';
 
     
-let post = document.getElementById("regForm");
+// let post = document.getElementById("regForm");
 
-post.addEventListener("submit", function(event){
+// post.addEventListener("submit", function(event){
+//   event.preventDefault()
+  
+//   // // RECUP DATA 
+//   //  console.log(nomEleve.value);
+//   //  console.log(prenomEleve.value);
+//   //  console.log(selectClasse.options[selectClasse.selectedIndex].value);
+//   //  console.log(dateEleve.value);
+//   //  console.log(lieuEleve.value);
+//   //  console.log(selectSexe.options[selectSexe.selectedIndex].value);
+
+
+//   //  console.log(nomTuteur.value);
+//   //  console.log(prenomTuteur.value);
+//   //  console.log(ProfessionTuteur.value);
+//   //  console.log(contactTuteur.value);
+//   //   console.log(emailTuteur.value);
+
+//   //  run(2, 1)
+
+  
+//   let tableauEleve= {
+//     nom: nomEleve.value,
+//     prenom: prenomEleve.value,
+//     sexe: selectSexe.value,
+//     date: dateEleve.value,
+//     lieu: lieuEleve.value,
+//     classe: selectClasse.value,
+//     nomTuteur: nomTuteur.value,
+//     prenomTuteur : prenomTuteur.value,
+//     profession: ProfessionTuteur.value,
+//     contact: contactTuteur.value,
+//     email: emailTuteur.value,    
+//   }
+//   console.log(tableauEleve)
+//   localStorage.setItem('tableauEleve', JSON.stringify(tableauEleve));
+
+ 
+
+
+
+
+// });
+
+window.addEventListener('load', () => {
+    voir()   
+})
+
+var students = []
+ let list = JSON.parse(localStorage.getItem('students')) 
+ 
+
+function soummettre (){
+
   event.preventDefault()
-  
-  // // RECUP DATA 
-  //  console.log(nomEleve.value);
-  //  console.log(prenomEleve.value);
-  //  console.log(selectClasse.options[selectClasse.selectedIndex].value);
-  //  console.log(dateEleve.value);
-  //  console.log(lieuEleve.value);
-  //  console.log(selectSexe.options[selectSexe.selectedIndex].value);
 
-
-  //  console.log(nomTuteur.value);
-  //  console.log(prenomTuteur.value);
-  //  console.log(ProfessionTuteur.value);
-  //  console.log(contactTuteur.value);
-  //   console.log(emailTuteur.value);
-
-  //  run(2, 1)
-
-  
   let tableauEleve= {
     nom: nomEleve.value,
     prenom: prenomEleve.value,
@@ -208,93 +236,72 @@ post.addEventListener("submit", function(event){
     profession: ProfessionTuteur.value,
     contact: contactTuteur.value,
     email: emailTuteur.value,
-    
 
-    
-    
   }
-  console.log(tableauEleve)
-  localStorage.setItem('tableauEleve', JSON.stringify(tableauEleve));
-
- 
-
-
-
-
-});
-function submit (){
-  (e)  =>{
-  e.preventDefault();
-
-  const firstName = document.querySelector("#Enom").value;
-  const lastName = document.querySelector("#Eprenom").value;
-  const sexe = document.querySelector("#sexe").value;
-  const date = document.querySelector("#Edate").value;
+  
+students.push(tableauEleve)
+localStorage.setItem("students", JSON.stringify(students));
 
   
-      const list = document.querySelector("#regForm");
-      const row = document.createComment("tr")
+      // const list = document.querySelector("#regForm");
+      // const row = document.createComment("tr")
+      var table = document.getElementById('parents')
+      table.innerHTML += `
+      <tr>
+          <td>${nom}</td>
+          <td>${prenom}</td>
+          <td>${sexe}</td>
+          <td>${date}</td>
+          <td>${lieu}</td>
+          <td>${classe}</td>
+          <td>${nomTuteur}</td>
+          <td>${prenomTuteur}</td>
+          <td>${profession}</td>
+          <td>${contact}</td>
+          <td>${email}</td>
 
-      row.innerHTML = `
-          <td>${firstName}</td>
-          <th>${lastName}</th>
-          <th>${sexe}</th>
-          <th>${date}</th>
 
-      `;
-      list.appendChild(row);
+    </tr>
+
+      `
+    //   var tr = document.createElement('tr')
+    //   var td = document.createElement('td')
+    //   tr.append(td)
+    //   table.append(tr);
+    //   td.innerHTML = "hello"
+
+
+      
       
       
       
     }
   
 
+    function voir() {
+    for (let index = 0; index < list.length; index++) {
+        let tableau = document.getElementById('parents')
+    
+     
+    tableau.innerHTML += `
+    <tr>
+          <td>${list[index].nom}</td>
+          <td>${list[index].prenom}</td>
+          <td>${list[index].sexe}</td>
+          <td>${list[index].date}</td>
+          <td>${list[index].lieu}</td>
+          <td>${list[index].classe}</td>
+          <td>${list[index].nomTuteur}</td>
+          <td>${list[index].prenomTuteur}</td>
+          <td>${list[index].profession}</td>
+          <td>${list[index].contact}</td>
+          <td>${list[index].email}</td>
+    </tr>
+    `
+       
+    }
 }
-document.querySelector("#regForm").addEventListener("submit" , (e)  =>{
-  e.preventDefault();
 
-  const firstName = document.querySelector("#Enom").value;
-  const lastName = document.querySelector("#Eprenom").value;
-  const sexe = document.querySelector("#sexe").value;
-  const date = document.querySelector("#Edate").value;
-
-  
-      const list = document.querySelector("#regForm");
-      const row = document.createComment("tr")
-
-      row.innerHTML = `
-          <td>${firstName}</td>
-          <th>${lastName}</th>
-          <th>${sexe}</th>
-          <th>${date}</th>
-
-      `;
-      list.appendChild(row);
-      
-      
-    }
-  
-) 
-
-var tableaux= document.getElementById("Enom").innerHTML;
-console.log(tableaux);
-
-
-
-
-// LOCALE STORAGE
-
-
-
-// localStorage.setItem("nom", "ink ");
-
-// document.getElementById("demo").innerHTML = localStorage.getItem("nom");
-
-
-
-// localStorage.removeItem("nom")
-
-      
-    </script>
+  </script>
   </body>
 </html>
