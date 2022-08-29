@@ -125,164 +125,76 @@
       }
 
 
-
-
-
-
-      
-    // VARIABLE
-
-    // ELEVE
-let nomEleve = document.getElementById("Enom")
-let prenomEleve = document.getElementById("Eprenom")
-let selectSexe = document.getElementById("sexe")
-let dateEleve = document.getElementById("Edate")
-let lieuEleve = document.getElementById("lieuNaiss")
-let selectClasse = document.getElementById("classe")
-
-    // TUTEUR
-let nomTuteur = document.getElementById("Tnom")
-let prenomTuteur = document.getElementById("Tprenom")
-let ProfessionTuteur = document.getElementById("TProfession")
-let contactTuteur = document.getElementById("Tcontact")
-let emailTuteur = document.getElementById("Temail")
-
-
-    // let table= []
-    // localStorage.setItem('Nom', JSON.stringify(table))
-   
-    // const nom = localStorage.getItem('nomEleve') || '',
-    //     prenom = localStorage.getItem('prenom') || '',
-    //     sexe = localStorage.getItem('sexe') || '',
-    //     date = localStorage.getItem('date') || '',
-    //     lieu = localStorage.getItem('lieu') || '',
-    //     classe = localStorage.getItem('classe') || '',
-
-
-    //     nomTut = localStorage.getItem('nomTut') || '',
-    //     prenomTut = localStorage.getItem('prenomTut') || '',
-    //     professionTut = localStorage.getItem('professionTut') || '',
-    //     contactTut = localStorage.getItem('contactTut') || '',
-    //     emailTut = localStorage.getItem('emailTut') || '';
-
-    
-// let post = document.getElementById("regForm");
-
-// post.addEventListener("submit", function(event){
-//   event.preventDefault()
-  
-//   // // RECUP DATA 
-//   //  console.log(nomEleve.value);
-//   //  console.log(prenomEleve.value);
-//   //  console.log(selectClasse.options[selectClasse.selectedIndex].value);
-//   //  console.log(dateEleve.value);
-//   //  console.log(lieuEleve.value);
-//   //  console.log(selectSexe.options[selectSexe.selectedIndex].value);
-
-
-//   //  console.log(nomTuteur.value);
-//   //  console.log(prenomTuteur.value);
-//   //  console.log(ProfessionTuteur.value);
-//   //  console.log(contactTuteur.value);
-//   //   console.log(emailTuteur.value);
-
-//   //  run(2, 1)
-
-  
-//   let tableauEleve= {
-//     nom: nomEleve.value,
-//     prenom: prenomEleve.value,
-//     sexe: selectSexe.value,
-//     date: dateEleve.value,
-//     lieu: lieuEleve.value,
-//     classe: selectClasse.value,
-//     nomTuteur: nomTuteur.value,
-//     prenomTuteur : prenomTuteur.value,
-//     profession: ProfessionTuteur.value,
-//     contact: contactTuteur.value,
-//     email: emailTuteur.value,    
-//   }
-//   console.log(tableauEleve)
-//   localStorage.setItem('tableauEleve', JSON.stringify(tableauEleve));
-
- 
-
-
-
-
-// });
-
 window.addEventListener('load', () => {
-    voir()   
+  students= JSON.parse(localStorage.getItem('lists')) || [];
+     
 })
 
-var students = []
- let list = JSON.parse(localStorage.getItem('students')) 
+
+  let students = []
+  let list = JSON.parse(localStorage.getItem('students')) 
  
 
 function soummettre (){
 
   event.preventDefault()
 
+let nomEleve = document.getElementById("Enom").value
+let prenomEleve = document.getElementById("Eprenom").value
+let selectSexe = document.getElementById("sexe").value
+let dateEleve = document.getElementById("Edate").value
+let lieuEleve = document.getElementById("lieuNaiss").value
+let selectClasse = document.getElementById("classe").value
+
+let nomTuteur = document.getElementById("Tnom").value
+let prenomTuteur = document.getElementById("Tprenom").value
+let ProfessionTuteur = document.getElementById("TProfession").value
+let contactTuteur = document.getElementById("Tcontact").value
+let emailTuteur = document.getElementById("Temail").value
+
   let tableauEleve= {
-    nom: nomEleve.value,
-    prenom: prenomEleve.value,
-    sexe: selectSexe.value,
-    date: dateEleve.value,
-    lieu: lieuEleve.value,
-    classe: selectClasse.value,
-    nomTuteur: nomTuteur.value,
-    prenomTuteur : prenomTuteur.value,
-    profession: ProfessionTuteur.value,
-    contact: contactTuteur.value,
-    email: emailTuteur.value,
+    nom: nomEleve,
+    prenom: prenomEleve,
+    sexe: selectSexe,
+    date: dateEleve,
+    lieu: lieuEleve,
+    classe: selectClasse,
+    nomTuteur: nomTuteur,
+    prenomTuteur : prenomTuteur,
+    profession: ProfessionTuteur,
+    contact: contactTuteur,
+    email: emailTuteur,
 
   }
   
 students.push(tableauEleve)
 localStorage.setItem("students", JSON.stringify(students));
 
-  
-      // const list = document.querySelector("#regForm");
-      // const row = document.createComment("tr")
-      var table = document.getElementById('parents')
-      table.innerHTML += `
-      <tr>
-          <td>${nom}</td>
-          <td>${prenom}</td>
-          <td>${sexe}</td>
-          <td>${date}</td>
-          <td>${lieu}</td>
-          <td>${classe}</td>
+
+let tableau = document.getElementById('parents')
+    tableau.innerHTML += `
+    <tr>
+          <td>${nomEleve}</td>
+          <td>${prenomEleve}</td>
+          <td>${selectSexe}</td>
+          <td>${dateEleve}</td>
+          <td>${lieuEleve}</td>
+          <td>${selectClasse}</td>
           <td>${nomTuteur}</td>
           <td>${prenomTuteur}</td>
-          <td>${profession}</td>
-          <td>${contact}</td>
-          <td>${email}</td>
-
-
+          <td>${ProfessionTuteur}</td>
+          <td>${contactTuteur}</td>
+          <td>${emailTuteur}</td>
     </tr>
-
-      `
-    //   var tr = document.createElement('tr')
-    //   var td = document.createElement('td')
-    //   tr.append(td)
-    //   table.append(tr);
-    //   td.innerHTML = "hello"
+    `      
 
 
-      
-      
-      
-      
     }
   
-
+    //on cree la boucle ici
     function voir() {
     for (let index = 0; index < list.length; index++) {
-        let tableau = document.getElementById('parents')
-    
-     
+    let tableau = document.getElementById('parents')
     tableau.innerHTML += `
     <tr>
           <td>${list[index].nom}</td>
@@ -300,7 +212,7 @@ localStorage.setItem("students", JSON.stringify(students));
     `
        
     }
-}
+} voir() 
 
   </script>
   </body>
